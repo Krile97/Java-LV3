@@ -1,0 +1,61 @@
+  
+package test;
+
+import java.util.Random;
+
+public class Matrica {
+    private int[][] matrica;
+    private int m;
+
+    public Matrica(int m) {
+        this.m = m;
+        matrica = new int[m][m];
+    }
+    
+
+    public void setMatrica(int[][] matrica) {
+        this.matrica = matrica;
+    }
+    
+    public void randMatrica(){
+        Random rand = new Random();
+        for(int i=0;i<m;i++){
+            System.out.print((i+1)+". ");
+            for(int j=0;j<m;j++){
+                matrica[i][j] = rand.nextInt(20);
+                System.out.print(matrica[i][j]+" ");
+            }
+            System.out.print("\n");
+        }
+    }
+  
+    public double arSredina(){
+        double suma = 0;
+        double brojac = 0;
+        
+        for(int i=0;i<m;i++){
+            for(int j=0;j<m;j++){
+                if(i!=j){
+                    continue;
+                }
+                suma += matrica[i][j];
+                brojac++;
+            }
+        }
+        return (suma/brojac);
+    }
+    
+    public int sumaNeparnih(){
+        int suma = 0;
+        for(int i=0;i<m;i++){
+            if((matrica[0][i]%2)!=0){
+                suma+=matrica[0][i];
+            }
+            if((matrica[i][0]%2)!=0){
+                suma+=matrica[i][0];
+            }
+        }
+        return suma;
+    }
+    
+}
