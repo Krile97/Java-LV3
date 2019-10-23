@@ -1,0 +1,73 @@
+package test;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author David
+ */
+public class Test {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int n = 0;
+        int m = 0;
+        int odabir = 0;
+        
+        //unos n
+        try{
+            do{
+                System.out.println("Unesite n: ");
+                n = input.nextInt();
+            }while(n<2|n>10);
+        }
+        catch(Exception greska){
+            System.out.println("Dogodila se greska pri unosu");
+        }
+        
+        //unos m
+        try{
+            do{
+                System.out.println("Unesite m: ");
+                m = input.nextInt();
+            }while(m<1|m>5);
+        }
+        catch(Exception greska){
+            System.out.println("Dogodila se greska pri unosu");
+        }
+        
+        //definiranje velicine matrice i polja u objektu       
+        Vektor Vek = new Vektor(n);
+        Matrica Mat = new Matrica(m);
+        //popunjavanje random vrijednostima
+        Mat.randMatrica();
+        Vek.randElementi();
+        
+        //odabir zeljene radnje
+        System.out.println("1. Aritmeticka sredina sporedne dijagonale\n2. Suma neparnih elemenata prvog retka i stupca\n3.Brojevi na parnim indeksima");
+      
+        try{
+            do{
+                odabir = input.nextInt();
+            }while(odabir<1||odabir>3);
+        }
+        catch(Exception greska){
+            System.out.println("Dogodila se greska pri unosu");
+        }
+        
+        //switch case
+        switch(odabir){
+            case 1:
+                System.out.println(Mat.arSredina());
+                break;
+            case 2:
+                System.out.println(Mat.sumaNeparnih());
+                break;
+            case 3:
+                Vek.ispisParnih();
+                break;
+   
+        }
+
+    }
+    
+}
